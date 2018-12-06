@@ -1,6 +1,8 @@
 const withOffline = require('next-offline')
 
 module.exports = withOffline({
+	assetPrefix:
+		'production' === process.env.NODE_ENV ? '/sw-notification-test' : '',
 	webpack({ ...config }, { isServer }) {
 		if (isServer) return config
 		const f = config.entry
@@ -11,7 +13,11 @@ module.exports = withOffline({
 			const entry = async () => ({
 				'service-worker': resolve('workers/service-worker.js'),
 			})
-			const output = { ...config.output, path: resolve('.dist'), filename: '[name].js' }
+			const output = {
+				...config.output,
+				path: resolve('.dist'),
+				filename: '[name].js',
+			}
 			await new Promise(s => require('rmdir')(resolve('.dist'), () => s()))
 			const mk = await runCompiler({
 				...config,
@@ -32,9 +38,8 @@ module.exports = withOffline({
 			...config,
 			entry,
 		}
-		
 	},
-	exportPathMap: async function ({ ...pathMap }, { dev }) {
+	exportPathMap: async function({ ...pathMap }, { dev }) {
 		delete pathMap['/index']
 		if (dev) return pathMap
 		return pathMap
@@ -48,24 +53,27 @@ module.exports = withOffline({
 	},
 })
 
-function runCompiler (config) {
+function runCompiler(config) {
 	return new Promise(async (resolve, reject) => {
 		const compiler = require('webpack')(config)
 		compiler.run((err, stat) => {
 			if (err) return reject(err)
 
 			const multiStats = stat.stats ? stat : { stats: [stat] }
-			const result = multiStats.stats.reduce((result, stat) => {
-				if (stat.compilation.errors.length > 0) {
-					result.errors.push(...stat.compilation.errors)
-				}
+			const result = multiStats.stats.reduce(
+				(result, stat) => {
+					if (stat.compilation.errors.length > 0) {
+						result.errors.push(...stat.compilation.errors)
+					}
 
-				if (stat.compilation.warnings.length > 0) {
-					result.warnings.push(...stat.compilation.warnings)
-				}
+					if (stat.compilation.warnings.length > 0) {
+						result.warnings.push(...stat.compilation.warnings)
+					}
 
-				return result
-			}, {errors: [], warnings: []})
+					return result
+				},
+				{ errors: [], warnings: [] },
+			)
 
 			resolve(result)
 		})

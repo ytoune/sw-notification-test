@@ -1,6 +1,10 @@
 {
   "private": true,
+  "scripts": {
+    "deploy": "node scripts/reset.js && next build && next export && gh-pages -d out"
+  },
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "next": "^7.0.2",
     "next-offline": "^3.2.2",
     "react": "^16.6.3",
