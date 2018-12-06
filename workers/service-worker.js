@@ -15,32 +15,52 @@ workbox.routing.registerRoute(
 	'GET',
 )
 
+self.addEventListener(
+	'notificationclick',
+	event => {
+		console.log('close')
+		event.notification.close()
+		// clients.openWindow('/')
+	},
+	false,
+)
+
 const sleep = ms => new Promise(r => setTimeout(r, ms))
 const main = async () => {
-	await console.log('hoge')
-	// self.addEventListener('push', function (event) {
-	//   console.log('Received a push message', event);
-	//   var title = "プッシュ通知です！";
-	//   var body = "プッシュ通知はこのようにして送られるのです";
+	console.log('hoge')
 
-	// });
+	const send = async num => {
+		try {
+			const { answer } = await fetch('https://yesno.wtf/api').then(r =>
+				r.json(),
+			)
+			self.registration.showNotification(`title ${num}`, {
+				body: `${answer} ${num}`,
+				// icon: 'data:,',
+				tag: 'push-notification-tag',
+			})
+		} catch (x) {
+			self.registration.showNotification(`error ${x.name} ${num}`, {
+				body: `${x.message}`,
+				// icon: 'data:,',
+				tag: 'push-notification-tag',
+			})
+		}
+	}
 
-	await sleep(1000 * 60 * 10)
-	event.waitUntil(
-		self.registration.showNotification('titletitle', {
-			body: 'bodybody',
-			// icon: 'http://free-images.gatag.net/images/201108090000.jpg',
-			tag: 'push-notification-tag',
-		}),
-	)
-	self.addEventListener(
-		'notificationclick',
-		function(event) {
-			event.notification.close()
-			// clients.openWindow('/')
-		},
-		false,
-	)
+	await sleep(1000)
+
+	//yesno.wtf/api
+
+	await send(1)
+
+	await sleep(1000 * 60 * 5)
+
+	await send(2)
+
+	await sleep(1000 * 60 * 5)
+
+	await send(3)
 }
 
 main()

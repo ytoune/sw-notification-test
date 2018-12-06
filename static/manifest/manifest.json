@@ -1,0 +1,8 @@
+{
+  "name": "sw-notification-test",
+  "short_name": "notification test",
+  "start_url": "/sw-notification-test/",
+  "display": "standalone",
+  "background_color": "#EFEFEF",
+  "theme_color": "#EFEFEF"
+}
