@@ -1,21 +1,21 @@
 self.__precacheManifest = [
   {
-    "url": "https://ytoune.github.io/sw-notification-test/_next/static\\nNeuZylsf~9mCJH~sVsJL\\pages\\index.js"
+    "url": "/sw-notification-test/_next/static\\MEFP8q9~SrQokUKZEKG6G\\pages\\index.js"
   },
   {
-    "url": "https://ytoune.github.io/sw-notification-test/_next/static\\nNeuZylsf~9mCJH~sVsJL\\pages\\_error.js"
+    "url": "/sw-notification-test/_next/static\\MEFP8q9~SrQokUKZEKG6G\\pages\\_error.js"
   },
   {
-    "url": "https://ytoune.github.io/sw-notification-test/_next/static\\nNeuZylsf~9mCJH~sVsJL\\pages\\_app.js"
+    "url": "/sw-notification-test/_next/static\\MEFP8q9~SrQokUKZEKG6G\\pages\\_app.js"
   },
   {
-    "url": "https://ytoune.github.io/sw-notification-test/_next/static/runtime/webpack-42652fa8b82c329c0559.js"
+    "url": "/sw-notification-test/_next/static/runtime/webpack-42652fa8b82c329c0559.js"
   },
   {
-    "url": "https://ytoune.github.io/sw-notification-test/_next/static/runtime/main-accd5aba59124da142fb.js"
+    "url": "/sw-notification-test/_next/static/runtime/main-83433c42adbeadba562d.js"
   },
   {
-    "url": "https://ytoune.github.io/sw-notification-test/_next/static/chunks/commons.1b1a347c198e888a7b36.js"
+    "url": "/sw-notification-test/_next/static/chunks/commons.0ee2b9c6baca7daa1c80.js"
   }
 ];
 
