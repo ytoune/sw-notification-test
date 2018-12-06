@@ -1,12 +1,12 @@
 self.__precacheManifest = [
   {
-    "url": "/sw-notification-test/_next/static\\vqSFBCjNdLpCwCFL7tUdP\\pages\\index.js"
+    "url": "/sw-notification-test/_next/static\\bNLOxI0deKP_0WkjcR5G9\\pages\\index.js"
   },
   {
-    "url": "/sw-notification-test/_next/static\\vqSFBCjNdLpCwCFL7tUdP\\pages\\_error.js"
+    "url": "/sw-notification-test/_next/static\\bNLOxI0deKP_0WkjcR5G9\\pages\\_error.js"
   },
   {
-    "url": "/sw-notification-test/_next/static\\vqSFBCjNdLpCwCFL7tUdP\\pages\\_app.js"
+    "url": "/sw-notification-test/_next/static\\bNLOxI0deKP_0WkjcR5G9\\pages\\_app.js"
   },
   {
     "url": "/sw-notification-test/_next/static/runtime/webpack-42652fa8b82c329c0559.js"
