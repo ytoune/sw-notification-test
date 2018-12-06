@@ -1,8 +1,9 @@
 const withOffline = require('next-offline')
 
+const assetPrefix =
+	'production' === process.env.NODE_ENV ? '/sw-notification-test' : ''
 module.exports = withOffline({
-	assetPrefix:
-		'production' === process.env.NODE_ENV ? '/sw-notification-test' : '',
+	assetPrefix,
 	webpack({ ...config }, { isServer }) {
 		if (isServer) return config
 		const f = config.entry
@@ -49,6 +50,9 @@ module.exports = withOffline({
 		// globPatterns: ['static/**/*'],
 		// globDirectory: '.',
 		// runtimeCaching: [{ urlPattern: /^https?.*/, handler: 'networkFirst' }],
+		modifyUrlPrefix: {
+			'/': assetPrefix + '/',
+		},
 		swSrc: '.dist/service-worker.js',
 	},
 })
