@@ -2,9 +2,11 @@ const withOffline = require('next-offline')
 
 const assetPrefix =
 	'production' === process.env.NODE_ENV ? '/sw-notification-test' : ''
+
 module.exports = withOffline({
 	assetPrefix,
 	webpack({ ...config }, { isServer }) {
+		// config.output.publicPath = `${assetPrefix}${config.output.publicPath || ''}`
 		if (isServer) return config
 		const f = config.entry
 		const entry = async function entry(...p) {
@@ -45,14 +47,16 @@ module.exports = withOffline({
 		if (dev) return pathMap
 		return pathMap
 	},
+	// publicPath: assetPrefix,
+	registerSwPrefix: assetPrefix,
 	generateSw: false,
 	workboxOpts: {
 		// globPatterns: ['static/**/*'],
 		// globDirectory: '.',
 		// runtimeCaching: [{ urlPattern: /^https?.*/, handler: 'networkFirst' }],
-		modifyUrlPrefix: {
-			'/': assetPrefix + '/',
-		},
+		// modifyUrlPrefix: {
+		// 	'/': assetPrefix + '/',
+		// },
 		swSrc: '.dist/service-worker.js',
 	},
 })
