@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "deploy": "node scripts/reset.js && next build && next export && gh-pages -d out"
+    "deploy": "node scripts/reset.js && next build && next export && touch out/.nojekyll && gh-pages -d out"
   },
   "dependencies": {
     "gh-pages": "^2.0.1",
